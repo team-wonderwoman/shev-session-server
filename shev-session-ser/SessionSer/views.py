@@ -35,7 +35,7 @@ def session_check(request):
     if request.method == 'POST':
         # 토큰 검사 (인증) - 인증된 사용자는 True, 아니면 False
         print("session_check")
-        print(request.POST)
+        # print(request.POST)
         # print(request.META)
         # print("request.META.HEADER")
         received_token = request.POST['Token']
@@ -58,3 +58,39 @@ def session_destroy(request):
 
         status_code['SUCCESS']['data'] = const_value['SESSION_EXPIRE']
         return JsonResponse({'result' : status_code['SUCCESS']}, status=status.HTTP_200_OK)
+
+#
+# @csrf_exempt
+# def invite_new(request):
+#     if request.method == 'POST':
+#         print("session_create 들어옴?")
+#
+#         invite_token = request.POST['verify_token']
+#         uid  = request.POST['uid']
+#
+#         print("In Session Restore - ")
+#         print(invite_token)
+#
+#         # 레디스에 토큰 저장
+#         redis_set(invite_token, uid)
+#
+#         status_code['SUCCESS']['data'] = const_value['SESSION_CREATED']
+#         return JsonResponse({'result': status_code['SUCCESS']}, status=status.HTTP_200_OK)
+#
+#
+# @csrf_exempt
+# def invite_check(request):
+#     if request.method == 'POST':
+#         print("session_create 들어옴?")
+#
+#         invite_token = request.POST['verify_token']
+#         uid  = request.POST['uid']
+#
+#         print("In Session Restore - ")
+#         print(invite_token)
+#
+#         # 레디스에 토큰 저장
+#         redis_get(invite_token)
+#
+#         status_code['SUCCESS']['data'] = const_value['SESSION_CREATED']
+#         return JsonResponse({'result': status_code['SUCCESS']}, status=status.HTTP_200_OK)

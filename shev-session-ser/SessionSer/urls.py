@@ -23,5 +23,8 @@ urlpatterns = [
     # 로그인 된 사용자의 세션 만료
     url(r'^destroy/$', views.session_destroy),
 
+    #
+    # url(r'^invite/$', views.invite_new),
+
 
 ]
